@@ -16,3 +16,13 @@ navToggle.addEventListener("click", () => {
     navToggle.getAttribute("aria-expanded") === "true" ? "false" : "true"
   );
 });
+
+// Close nav if click outside
+// document.addEventListener("click", (e) => {
+//   const isClickInsideToggle = navToggle.contains(e.target);
+//   const isClickInsideNav = primaryNav.contains(e.target);
+
+//   if (!isClickInsideToggle && !isClickInsideNav) {
+//     navToggle.setAttribute("aria-expanded", "false");
+//   }
+// });
