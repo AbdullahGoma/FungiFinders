@@ -206,6 +206,14 @@
     display: grid;
     gap: var(--grid-flow-gap, 1rem);
   }
+  
+  .grid-auto-fit {
+    --auto-fit-min-col-size: 250px;
+    display: grid;
+    gap: 1rem;   
+    /* minmax could cause overflow */
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--auto-fit-min-col-size), 100%), 1fr)); 
+  }
 
   .equal-columns {
     display: grid;
@@ -277,6 +285,7 @@
       --wrapper-max-width: 1330px;
     }
   }
+
 }
 
 @layer components {
