@@ -197,6 +197,12 @@
 }
 
 @layer layout {
+  .flex-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
   .flow > * + * {
     /* ==    > :not(:first-child)     */
     margin-top: var(--flow-spacer, 1em);
@@ -523,6 +529,17 @@
     color: var(--text-high-contrast);
     background-color: var(--background-accent-light);
   }
+
+  select {
+    padding: .5rem;
+    background-color: var(--background-accent-main);
+    border: 0;
+    border-radius: var(--border-radius-2);
+    color: var(--text-high-contrast);
+  }
+  /* select::picker(select) {
+    appearance: base-select;
+  } */
 }
 
 @layer utilities {
