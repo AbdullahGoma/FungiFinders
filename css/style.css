@@ -200,7 +200,7 @@
   .flex-group {
     display: flex;
     flex-wrap: wrap;
-    gap: .5rem;
+    gap: 0.5rem;
   }
 
   .flow > * + * {
@@ -447,6 +447,64 @@
     --card-gap: 0.75rem;
   }
 
+  .faq-bento {
+    --card-title-color: var(--text-high-contrast);
+
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+      "card-one"
+      "card-two"
+      "card-three"
+      "card-four";
+
+    @media (min-width: 601px) and (max-width: 900px) {
+      grid-template-areas:
+        "card-one card-two"
+        "card-three card-four";
+
+      .card:nth-child(even) > img {
+        order: 3;
+      }
+    }
+
+    @media (width > 900px) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+        "card-one  card-two  card-four"
+        "card-three  card-three  card-four";
+
+      .card:nth-child(3) {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .card:nth-child(3) img {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+      }
+    }
+
+    .card > img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card:nth-child(1) {
+      grid-area: card-one;
+    }
+    .card:nth-child(2) {
+      grid-area: card-two;
+    }
+    .card:nth-child(3) {
+      grid-area: card-three;
+    }
+    .card:nth-child(4) {
+      grid-area: card-four;
+    }
+  }
+
   .card {
     display: flex;
     flex-direction: column;
@@ -531,13 +589,14 @@
   }
 
   select {
-    padding: .5rem;
+    padding: 0.5rem;
     background-color: var(--background-accent-main);
     border: 0;
     border-radius: var(--border-radius-2);
     color: var(--text-high-contrast);
   }
-  /* select::picker(select) {
+  /* select,
+  select::picker(select) {
     appearance: base-select;
   } */
 }
