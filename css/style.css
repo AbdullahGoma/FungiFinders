@@ -609,6 +609,11 @@
 }
 
 @layer utilities {
+  /* very important if we use filer with grid  */
+  [hidden] {
+    display: none;
+  }
+
   .visually-hidden {
     /* screen reader only  */
     clip: rect(0 0 0 0);
