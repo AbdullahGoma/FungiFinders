@@ -3,6 +3,8 @@ const cards = document.querySelectorAll(".mushroom-guide .card");
 const seasonalFilter = document.querySelector('#season');
 const edibleFilter = document.querySelector('#edible');
 
+const noResultMessage = document.querySelector('.no-matches')
+
 const currentFilters = {
     season: "all", 
     edible: "all"
@@ -28,24 +30,36 @@ function updateFilter(e) {
 }
 
 function filterCards() {
+    let hasVisibleCards = false;
+    
     cards.forEach((card) => {
-       const season = card.querySelector("[data-season]").dataset.season; 
-       const edible = card.querySelector("[data-edible]").dataset.edible; 
+      const season = card.querySelector("[data-season]").dataset.season;
+      const edible = card.querySelector("[data-edible]").dataset.edible;
 
-    //    const matchesSeason = currentFilters.season === season;
-    //    const matchesEdible = currentFilters.edible === edible;
+      //    const matchesSeason = currentFilters.season === season;
+      //    const matchesEdible = currentFilters.edible === edible;
 
-    //    if ((matchesEdible || currentFilters.edible === "all") && (matchesSeason || currentFilters.season === "all")) {
-    //     card.hidden = false; // Remove hidden attribute
-    //    } else {
-    //     card.hidden = true; // Add hidden attribute
-    //    }
+      //    if ((matchesEdible || currentFilters.edible === "all") && (matchesSeason || currentFilters.season === "all")) {
+      //     card.hidden = false; // Remove hidden attribute
+      //     hasVisibleCards = true;
+      //    } else {
+      //     card.hidden = true; // Add hidden attribute
+      //    }
 
-    const matchesSeason =
-      currentFilters.season === "all" || currentFilters.season === season;
-    const matchesEdible =
-      currentFilters.edible === "all" || currentFilters.edible === edible;
+      // if (hasVisibleCards)
+      //   noResultMessage.hidden = true;
+      // else
+      //   noResultMessage.hidden = false;
 
-    card.hidden = !(matchesSeason && matchesEdible);
+      const matchesSeason =
+        currentFilters.season === "all" || currentFilters.season === season;
+      const matchesEdible =
+        currentFilters.edible === "all" || currentFilters.edible === edible;
+
+      const isVisible = matchesSeason && matchesEdible;
+      card.hidden = !isVisible;
+      
+      if (isVisible) hasVisibleCards = true;
     });
+    noResultMessage.hidden = hasVisibleCards;
 }
