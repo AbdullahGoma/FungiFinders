@@ -18,11 +18,20 @@ navToggle.addEventListener("click", () => {
 });
 
 // Close nav if click outside
-// document.addEventListener("click", (e) => {
-//   const isClickInsideToggle = navToggle.contains(e.target);
-//   const isClickInsideNav = primaryNav.contains(e.target);
+document.addEventListener("click", (e) => {
+  const isClickInsideToggle = navToggle.contains(e.target);
+  const isClickInsideNav = primaryNav.contains(e.target);
 
-//   if (!isClickInsideToggle && !isClickInsideNav) {
-//     navToggle.setAttribute("aria-expanded", "false");
-//   }
-// });
+  if (!isClickInsideToggle && !isClickInsideNav) {
+    navToggle.setAttribute("aria-expanded", "false");
+  }
+});
+
+// Close nav when a link inside the nav is clicked
+const navLinks = primaryNav.querySelectorAll("a");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    navToggle.setAttribute("aria-expanded", "false");
+  });
+});
