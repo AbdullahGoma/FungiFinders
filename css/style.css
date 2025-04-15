@@ -347,6 +347,9 @@
 
   .site-header {
     padding-block: 1rem;
+
+    overflow-x: clip;
+    position: relative;
   }
   .site-header__inner {
     display: flex;
