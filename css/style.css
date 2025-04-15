@@ -1,4 +1,14 @@
-@layer reset, base;
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-group(root) {
+  animation-duration: 1s;
+}
+
+::view-transition-new(root) {
+  animation-duration: 1s;
+}
 
 @layer reset {
   *,
