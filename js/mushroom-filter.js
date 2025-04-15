@@ -63,3 +63,10 @@ function filterCards() {
     });
     noResultMessage.hidden = hasVisibleCards;
 }
+
+function enableFiltering() {
+  seasonalFilter.hidden = false;
+  edibleFilter.hidden = false;
+}
+
+enableFiltering();
