@@ -448,7 +448,7 @@
       li {
         translate: 0 0;
         opacity: 1;
-        
+
         @starting-style {
           opacity: 0;
           translate: 50% 0;
@@ -488,6 +488,10 @@
     background-image: url(/assets/hero.webp);
     background-size: cover;
     background-position: center;
+
+    animation: fade-out forwards;
+    animation-timeline: view();
+    animation-range-start: exit;
   }
 
   .hero__title {
@@ -572,6 +576,8 @@
     padding: 1rem;
     background-color: var(--background-light);
     border-radius: var(--border-radius-3);
+    animation: fade-in both;
+    animation-timeline: view();
 
     img {
       border-radius: var(--border-radius-2);
@@ -669,7 +675,6 @@
   .resizing * {
     transition: none;
     animation-play-state: paused;
-    
   }
 
   .visually-hidden {
@@ -773,6 +778,26 @@
   }
   .font-size-lg {
     font-size: var(--font-size-lg);
+  }
+}
+
+@layer animations {
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 
